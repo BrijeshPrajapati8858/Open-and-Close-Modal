@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        min-height: 100vh;
+      
+    }
+    .modal_wrapper{
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.303);
+       
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;  
+        transition: all .3s ease-in-out;
+
+    }
+    .modal_container{
+        padding: 2rem;
+        width: 560px;
+        max-width: 90%;
+        background:white;
+       position: relative;
+        border-radius: 5px;
+     
+    
+    }
+    h2{
+        margin-bottom: 10px;
+
+    }
+    p{
+        margin-bottom: 30px;
+    }
+    .btn{
+        padding: .5rem 2rem;
+        border: none;
+        background-color: rgb(81, 0, 81);
+        color: white;
+        border-radius:5px ;
+        cursor: pointer;
+        text-transform: capitalize;
+    }
+    .btn:hover{
+        background-color: blueviolet;
+    }
+   
+    .active{
+        opacity: 1;
+        pointer-events: auto;
+    }
+   
+  </style>
+  <body>
+    <div>
+        <button class="btn" id="show">Click me</button>
+        <div class="modal_wrapper">
+          
+            <div class="modal_container"> 
+               
+                <h2 readonly >Open and close Modal logic</h2>
+                <p readonly>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis id perspiciatis doloremque quibusdam laborum repellendus fugit, aliquam reiciendis accusamus corporis exercitationem. Recusandae est qui amet commodi soluta quaerat quo nobis.</p>
+                <div class="action">
+                    <button class="btn" id="hide">close</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="application/javascript">
+ const trigger = document.querySelector("#show");
+ const hide = document.querySelector("#hide");
+ const modal_wrapper = document.querySelector(".modal_wrapper")
+ trigger.addEventListener("click", function(){
+    modal_wrapper.classList.add("active")
+ })
+ hide.addEventListener("click", function(){
+    modal_wrapper.classList.remove("active")
+ })
+ modal_wrapper.addEventListener("click", function(e){
+    if(e.target !== this) return;
+    modal_wrapper.classList.remove("active")
+
+ })
+    </script>
+  </body>
+</html>
